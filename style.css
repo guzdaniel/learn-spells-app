@@ -43,10 +43,6 @@ body {
   border-radius: 20px;
 }
 
-.spells-columns{
-  column-span: all;
-}
-
 #spells-header {
   font-weight: bold;
   font-size: 30px;

@@ -1,15 +1,27 @@
 const init = () => {
 
     const BASE_URL = "https://fedeperin-harry-potter-api-en.herokuapp.com/spells"
+    const spellsList = document.getElementById("spells-list")
+    const spellForm = document.querySelector("form")
 
     renderSpellsList()
+    attachSubmitEventToForm()
+   
 
-    const spellsList = document.getElementById("spells-list")
+    function attachSubmitEventToForm(){
+        spellForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            console.log("form input:", event.target["new-spell"].value)
+            
+        })
+    }
 
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellActions)
     }
+
+
 
     function renderSpellActions(event) {
         if (event.target.classList.contains("spell-name")) {

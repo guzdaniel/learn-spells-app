@@ -20,8 +20,13 @@ const init = () => {
                     const spellContainer = event.target.parentNode
                     const spellAction = spellContainer.querySelector('.spell-action')
 
-                    spellContainer.innerHTML += `
-                    <ul class="spell-action">${spellObj.use}</ul>`
+                    if (spellAction !== null) {
+                        spellAction.remove()
+                    }
+                    else {
+                        spellContainer.innerHTML += `
+                         <ul class="spell-action">${spellObj.use}</ul>`
+                    }
                 })
         }
     }

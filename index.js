@@ -22,8 +22,10 @@ const init = () => {
 
                     if (spellAction !== null) {
                         spellAction.remove()
+                        spellName.style.color = "black"
                     }
                     else {
+                        spellName.style.color = "rgb(168, 0, 0)"
                         spellContainer.innerHTML += `
                          <ul class="spell-action">${spellObj.use}</ul>`
                     }

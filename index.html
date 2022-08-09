@@ -8,20 +8,22 @@
 </head>
 
 <body>
-  <div id="main-content">
+  <div id="spells-quiz">
     <h1>HP Spells Trainer</h1>
     <form id="form" data-spell="">
       <label for="spell-entered" style="font-size: 30px;">Which spell would you use to do the
         following?</label>
-      <h3 id="random-spell">Leaves you frozen</h3>
+      <h3 id="random-spell-action">Leaves you frozen</h3>
       <input type="text" class="input-element" id="new-spell" name="spell-entered" placeholder="Spell Name">
-      <button type="submit" class="input-button" value="Create New Task">Submit</button>
+      <button type="submit" class="input-button">Submit</button>
     </form>
   </div>
   <div id="spells-container">
     <div id="spells-header">Spells</div>
-    <p id="spells-list">This is a spell</p>
+    <div id="spells-list">
+    </div>
   </div>
+  <br>
   <script src="./index.js"></script>
 </body>
 

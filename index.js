@@ -6,7 +6,26 @@ const init = () => {
 
     const spellsList = document.getElementById("spells-list")
 
-   
+
+    function attachClickEventsToSpells() {
+        spellsList.addEventListener("click", renderSpellActions)
+    }
+
+    function renderSpellActions(event) {
+        if (event.target.classList.contains("spell-name")) {
+            fetch(BASE_URL + `/${event.target.dataset.id}`)
+                .then(res => res.json())
+                .then(spellObj => {
+                    const spellName = event.target
+                    const spellContainer = event.target.parentNode
+                    const spellAction = spellContainer.querySelector('.spell-action')
+
+                    spellContainer.innerHTML += `
+                    <ul class="spell-action">${spellObj.use}</ul>`
+                })
+        }
+    }
+
 
     function renderSpellsList() {
         let spellsArr = []
@@ -17,7 +36,7 @@ const init = () => {
                     if (spellObj.spell.includes("/")) {
                         spellsArr = spellObj.spell.split("/")
                         spellsList.innerHTML +=
-                            `<div id=spell-container>
+                            `<div class=spell-container>
                             <ul class="spell-name" data-id="${spellObj.id}">${spellsArr[0]} OR ${spellsArr[1]}</ul> 
                             </div>`
                     }
@@ -29,7 +48,9 @@ const init = () => {
                     }
                 })
 
-                //attachClickEventsToSpells()
+                //const spellNodes = document.querySelectorAll('.spell-container')
+
+                attachClickEventsToSpells()
             })
     }
 

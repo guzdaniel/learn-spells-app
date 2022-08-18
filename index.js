@@ -39,8 +39,10 @@ const init = () => {
     function attachClickEventToSortButton() {
         sortButton.addEventListener("click", () => {
             console.log("sort button was clicked!")
-            spellNodes().forEach(spell => {
-                console.log(spell.innerText)
+            const spellsElemsArray = Array.from(spellNodes())
+            const sortedSpellElems = sortSpellsAlphabetically(spellsElemsArray)
+            sortedSpellElems.forEach(elem => {
+                console.log(elem)
             })
         })
     }
@@ -94,8 +96,9 @@ const init = () => {
         }
     }
 
-    function sortSpellsAlphabetically(spellsArr) {
-        const sorted = spellsArr.sort((a, b) => {
+    // sort spell ul elements by spell name, then return sorted ul elements
+    function sortSpellsAlphabetically(spellsElemsArray) {
+        const sortedArr = spellsElemsArray.sort((a, b) => {
             if (a.innerText < b.innerText) {
                 return -1;
             }
@@ -104,7 +107,7 @@ const init = () => {
             }
             return 0;
         })
-        return sorted
+        return sortedArr
     }
 
 

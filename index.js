@@ -22,6 +22,7 @@ const init = () => {
     console.log(string.substring(6))
     console.log(string.substring(6 + 1))
     console.log(string.indexOf("/"))
+    console.log(string.indexOf("1"))
 
 
     function attachClickEventsToSpells() {

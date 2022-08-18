@@ -6,6 +6,7 @@ const init = () => {
     const spellNodes = () => document.querySelectorAll(".spell-name")
     const sortButton = document.querySelector("#sort")
     const randUseElem = document.querySelector("#random-spell-action")
+    const userResult = document.querySelector("#result")
 
 
     renderSpellsList()
@@ -33,7 +34,11 @@ const init = () => {
             userFormInput = userFormInput.toLowerCase()
 
             if (spellOfRandomUse === userFormInput) {
-                console.log("CORRECT")
+                userResult.innerText = "Correct! 10 Points for your house!"
+            }
+
+            else {
+                userResult.innerText = `Sorry! Incorrect. Keep studying and try again!`
             }
         })
     }

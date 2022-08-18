@@ -13,6 +13,7 @@ const init = () => {
     attachClickEventToSortButton()
     renderRandomSpell()
     attachMouseOverEventToRandomUse()
+    attachClickEventToRandomUse()
 
 
     function attachClickEventsToSpells() {
@@ -49,6 +50,13 @@ const init = () => {
         })
         randUseElem.addEventListener("mouseout", () => {
             randUseElem.style = "text-decoration: none"
+        })
+    }
+
+    function attachClickEventToRandomUse() {
+        randUseElem.addEventListener("click", () => {
+            renderRandomSpell()
+            
         })
     }
    

@@ -16,6 +16,13 @@ const init = () => {
     attachMouseOverEventToRandomUse()
     attachClickEventToRandomUse()
 
+    const string = "String/String2"
+    console.log(string.substring(0, 4))
+    console.log(string.substring(0, 6))
+    console.log(string.substring(6))
+    console.log(string.substring(6 + 1))
+    console.log(string.indexOf("/"))
+
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)

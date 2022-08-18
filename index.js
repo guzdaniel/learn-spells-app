@@ -21,60 +21,7 @@ const init = () => {
     }
 
     function attachSubmitEventToForm() {
-        spellForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            console.log("form input:", event.target["new-spell"].value)
-
-            let spellOfRandomUse = randUseElem.dataset.name
-            let userFormInput = event.target["new-spell"].value
-
-
-            spellOfRandomUse = spellOfRandomUse.toLowerCase()
-            userFormInput = userFormInput.toLowerCase()
-
-            const slashIndex = spellOfRandomUse.indexOf('/')
-
-            if (slashIndex === -1) {
-
-                if (spellOfRandomUse === userFormInput) {
-                    userResult.innerText = "Correct! 10 Points for your house!"
-                    setTimeout(() => {
-                        userResult.innerText = ""
-                    }
-                        , 2000)
-                }
-                else {
-                    userResult.innerText = `Sorry! Incorrect. Keep studying and try again!
-                    Hint: Starts with a(n) \'${spellOfRandomUse.substring(0, 1).toUpperCase()}\'`
-                }
-            }
-
-            else if (slashIndex > -1) {
-                const spellNameOne = spellOfRandomUse.substring(0, slashIndex)
-                const spellNameTwo = spellOfRandomUse.substring(slashIndex + 1)
-
-                if ((spellNameOne === userFormInput) ||
-                    (spellNameTwo === userFormInput)) {
-
-                    userResult.innerText = "Correct! 10 Points for your house!"
-                    setTimeout(() => {
-                        userResult.innerText = ""
-                    }
-                        , 2000)
-                }
-                else {
-                    userResult.innerText = `Sorry! Incorrect. Keep studying and try again!
-                    Hint: Starts with a(n) \'${spellNameOne.substring(0, 1).toUpperCase()}\' or 
-                    a(n) \'${spellNameTwo.substring(0, 1).toUpperCase()}\'`
-
-                }
-            }
-            else {
-                userResult.innerText = `Sorry! Incorrect. Keep studying and try again!`
-            }
-
-
-        })
+        spellForm.addEventListener("submit", compareUserInput)
     }
 
     function attachMouseOverEventsToSpells() {
@@ -180,6 +127,55 @@ const init = () => {
                 randUseElem.setAttribute("data-name", randomSpellObj.spell)
             })
     }
+
+    function compareUserInput(event) {
+        event.preventDefault();
+    
+        let spellOfRandomUse = randUseElem.dataset.name
+        let userFormInput = event.target["new-spell"].value
+    
+    
+        spellOfRandomUse = spellOfRandomUse.toLowerCase()
+        userFormInput = userFormInput.toLowerCase()
+    
+        const slashIndex = spellOfRandomUse.indexOf('/')
+    
+        if (slashIndex === -1) {
+    
+            if (spellOfRandomUse === userFormInput) {
+                userResult.innerText = "Correct! 10 Points for your house!"
+                setTimeout(() => {
+                    userResult.innerText = ""
+                }
+                    , 2000)
+            }
+            else {
+                userResult.innerText = `Sorry! Incorrect. Keep studying and try again!
+                Hint: Starts with a(n) \'${spellOfRandomUse.substring(0, 1).toUpperCase()}\'`
+            }
+        }
+        else if (slashIndex > -1) {
+            const spellNameOne = spellOfRandomUse.substring(0, slashIndex)
+            const spellNameTwo = spellOfRandomUse.substring(slashIndex + 1)
+    
+            if ((spellNameOne === userFormInput) || (spellNameTwo === userFormInput)) {
+                userResult.innerText = "Correct! 10 Points for your house!"
+                setTimeout(() => {
+                    userResult.innerText = ""
+                }
+                    , 2000)
+            }
+            else {
+                userResult.innerText = `Sorry! Incorrect. Keep studying and try again!
+                Hint: Starts with a(n) \'${spellNameOne.substring(0, 1).toUpperCase()}\' or 
+                a(n) \'${spellNameTwo.substring(0, 1).toUpperCase()}\'`
+            }
+        }
+        else {
+            userResult.innerText = `Sorry! Incorrect. Keep studying and try again!`
+        }
+    }
+    
 
     // sort spell ul elements by spell name, then return sorted ul elements
     function sortSpellElemsAlphab(spellsElemsArray) {

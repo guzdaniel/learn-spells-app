@@ -12,15 +12,8 @@ const init = () => {
     attachSubmitEventToForm()
     attachClickEventToSortButton()
     renderRandomSpell()
+    attachMouseOverEventToRandomUse()
 
-    randUseElem.addEventListener("mouseover", () => {
-        randUseElem.style = "text-decoration: underline"
-        console.log(randUseElem.dataset.name)
-    })
-
-    randUseElem.addEventListener("mouseout", () => {
-        randUseElem.style = "text-decoration: none"
-    })
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
@@ -47,6 +40,16 @@ const init = () => {
 
     function attachClickEventToSortButton() {
         sortButton.addEventListener("click", sortSpells)
+    }
+
+    function attachMouseOverEventToRandomUse() {
+        randUseElem.addEventListener("mouseover", () => {
+            randUseElem.style = "text-decoration: underline"
+            console.log(randUseElem.dataset.name)
+        })
+        randUseElem.addEventListener("mouseout", () => {
+            randUseElem.style = "text-decoration: none"
+        })
     }
    
     function renderSpellsList() {

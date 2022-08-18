@@ -11,7 +11,7 @@ const init = () => {
     attachSubmitEventToForm()
     attachClickEventToSortButton()
 
-    console.log(getRandomElemFromArray(["one", "two", "three"]))
+    renderRandomSpell()
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
@@ -99,6 +99,15 @@ const init = () => {
             spellsList.appendChild(e.parentNode) // append div container of each spell
         })
         sortButton.remove()
+    }
+
+    function renderRandomSpell() {
+        fetch(BASE_URL)
+            .then(res => res.json())
+            .then(data => {
+                const randomSpellObj = getRandomElemFromArray(data)
+                console.log(randomSpellObj)
+            })
     }
 
     // sort spell ul elements by spell name, then return sorted ul elements

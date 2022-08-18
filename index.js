@@ -6,7 +6,7 @@ const init = () => {
     const spellNodes = () => document.querySelectorAll(".spell-name")
     const sortButton = document.querySelector("#sort")
     const randUseElem = document.querySelector("#random-spell-action")
-   
+
 
     renderSpellsList()
     attachSubmitEventToForm()
@@ -25,13 +25,19 @@ const init = () => {
             event.preventDefault();
             console.log("form input:", event.target["new-spell"].value)
 
-            if(randUseElem.dataset.name === event.target["new-spell"].value)
-            {
+            let spellOfRandomUse = randUseElem.dataset.name
+            let userFormInput = event.target["new-spell"].value
+
+
+            spellOfRandomUse = spellOfRandomUse.toLowerCase()
+            userFormInput = userFormInput.toLowerCase()
+
+            if (spellOfRandomUse === userFormInput) {
                 console.log("CORRECT")
             }
         })
     }
-   
+
     function attachMouseOverEventsToSpells() {
         spellNodes().forEach(spell => {
             spell.addEventListener("mouseover", () => {
@@ -41,7 +47,7 @@ const init = () => {
                 spell.style.color = "black"
             })
         })
-    
+
     }
 
     function attachClickEventToSortButton() {
@@ -61,10 +67,10 @@ const init = () => {
     function attachClickEventToRandomUse() {
         randUseElem.addEventListener("click", () => {
             renderRandomSpell()
-            
+
         })
     }
-   
+
     function renderSpellsList() {
         let spellsArr = []
         fetch(BASE_URL)
@@ -117,9 +123,9 @@ const init = () => {
     function sortSpells() {
         const spellsElemsArray = Array.from(spellNodes());
         const sortedSpellElemsArray = sortSpellElemsAlphab(spellsElemsArray)
-    
+
         spellsList.innerHTML = ""
-    
+
         sortedSpellElemsArray.forEach(e => {
             spellsList.appendChild(e.parentNode) // append div container of each spell
         })

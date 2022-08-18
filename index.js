@@ -11,7 +11,7 @@ const init = () => {
     attachSubmitEventToForm()
     attachClickEventToSortButton()
 
-
+    console.log(getRandomElemFromArray(["one", "two", "three"]))
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)

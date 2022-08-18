@@ -18,6 +18,9 @@ const init = () => {
         console.log(randUseElem.dataset.name)
     })
 
+    randUseElem.addEventListener("mouseout", () => {
+        randUseElem.style = "text-decoration: none"
+    })
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)

@@ -11,8 +11,13 @@ const init = () => {
     renderSpellsList()
     attachSubmitEventToForm()
     attachClickEventToSortButton()
-
     renderRandomSpell()
+
+    randUseElem.addEventListener("mouseover", () => {
+        randUseElem.style = "text-decoration: underline"
+        console.log(randUseElem.dataset.name)
+    })
+
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)

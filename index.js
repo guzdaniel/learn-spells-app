@@ -11,10 +11,7 @@ const init = () => {
     attachSubmitEventToForm()
     attachClickEventToSortButton()
 
-    console.log(Math.random() * 10)
-    console.log(Math.floor(5.12))
-    console.log(Math.floor(Math.random() * 10))
-    
+
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
@@ -118,8 +115,10 @@ const init = () => {
         return sortedArr
     }
 
-
-
+    function getRandomElemFromArray(arr) {
+        const valueAtRandmIndexOfArr = arr[Math.floor(Math.random() * arr.length)]
+        return valueAtRandmIndexOfArr
+    }
 
 }
 document.addEventListener("DOMContentLoaded", init)

@@ -37,14 +37,7 @@ const init = () => {
     }
 
     function attachClickEventToSortButton() {
-        sortButton.addEventListener("click", () => {
-            console.log("sort button was clicked!")
-            const spellsElemsArray = Array.from(spellNodes())
-            const sortedSpellElems = sortSpellsAlphabetically(spellsElemsArray)
-            sortedSpellElems.forEach(elem => {
-                console.log(elem)
-            })
-        })
+        sortButton.addEventListener("click", sortSpells)
     }
    
     function renderSpellsList() {
@@ -96,8 +89,20 @@ const init = () => {
         }
     }
 
+    function sortSpells() {
+        const spellsElemsArray = Array.from(spellNodes());
+        const sortedSpellElemsArray = sortSpellElemsAlphab(spellsElemsArray)
+    
+        spellsList.innerHTML = ""
+    
+        sortedSpellElemsArray.forEach(e => {
+            spellsList.appendChild(e.parentNode) // append div container of each spell
+        })
+        sortButton.remove()
+    }
+
     // sort spell ul elements by spell name, then return sorted ul elements
-    function sortSpellsAlphabetically(spellsElemsArray) {
+    function sortSpellElemsAlphab(spellsElemsArray) {
         const sortedArr = spellsElemsArray.sort((a, b) => {
             if (a.innerText < b.innerText) {
                 return -1;

@@ -107,6 +107,7 @@ const init = () => {
             .then(res => res.json())
             .then(data => {
                 const randomSpellObj = getRandomElemFromArray(data)
+                randUseElem.innerText = randomSpellObj.use
                 console.log(randomSpellObj)
             })
     }

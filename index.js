@@ -24,6 +24,11 @@ const init = () => {
         spellForm.addEventListener("submit", (event) => {
             event.preventDefault();
             console.log("form input:", event.target["new-spell"].value)
+
+            if(randUseElem.dataset.name === event.target["new-spell"].value)
+            {
+                console.log("CORRECT")
+            }
         })
     }
    

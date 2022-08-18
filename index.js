@@ -1,6 +1,8 @@
 const init = () => {
 
     const BASE_URL = "https://fedeperin-harry-potter-api-en.herokuapp.com/spells"
+    
+    //Node getters
     const spellsList = document.getElementById("spells-list")
     const spellForm = document.querySelector("form")
     const spellNodes = () => document.querySelectorAll(".spell-name")
@@ -9,6 +11,7 @@ const init = () => {
     const userResult = document.querySelector("#result")
     const spellFormInput = document.querySelector("#new-spell")
 
+    //Function calls
 
     renderSpellsList()
     attachSubmitEventToForm()
@@ -16,6 +19,8 @@ const init = () => {
     renderRandomSpell()
     attachMouseOverEventToRandomUse()
     attachClickEventToRandomUse()
+
+    // Attach event listeners
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
@@ -58,6 +63,8 @@ const init = () => {
             spellFormInput.value = ""
         })
     }
+
+    // Render to DOM
 
     function renderSpellsList() {
         let spellsArr = []
@@ -178,8 +185,7 @@ const init = () => {
         }
     }
     
-
-    // sort spell ul elements by spell name, then return sorted ul elements
+    // sorts spell ul elements by spell name, then returns sorted ul elements
     function sortSpellElemsAlphab(spellsElemsArray) {
         const sortedArr = spellsElemsArray.sort((a, b) => {
             if (a.innerText < b.innerText) {
@@ -193,6 +199,7 @@ const init = () => {
         return sortedArr
     }
 
+    // returns value at a random index of an array
     function getRandomElemFromArray(arr) {
         const valueAtRandmIndexOfArr = arr[Math.floor(Math.random() * arr.length)]
         return valueAtRandmIndexOfArr

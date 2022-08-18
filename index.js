@@ -7,6 +7,7 @@ const init = () => {
     const sortButton = document.querySelector("#sort")
     const randUseElem = document.querySelector("#random-spell-action")
     const userResult = document.querySelector("#result")
+    const spellFormInput = document.querySelector("#new-spell")
 
 
     renderSpellsList()
@@ -53,7 +54,8 @@ const init = () => {
     function attachClickEventToRandomUse() {
         randUseElem.addEventListener("click", () => {
             renderRandomSpell()
-
+            userResult.innerText = ""
+            spellFormInput.value = ""
         })
     }
 

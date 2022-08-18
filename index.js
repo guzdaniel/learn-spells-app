@@ -5,11 +5,13 @@ const init = () => {
     const spellForm = document.querySelector("form")
     const spellNodes = () => document.querySelectorAll(".spell-name")
     const sortButton = document.querySelector("#sort")
-    
+   
 
     renderSpellsList()
     attachSubmitEventToForm()
     attachClickEventToSortButton()
+
+    
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
@@ -37,6 +39,9 @@ const init = () => {
     function attachClickEventToSortButton() {
         sortButton.addEventListener("click", () => {
             console.log("sort button was clicked!")
+            spellNodes().forEach(spell => {
+                console.log(spell.innerText)
+            })
         })
     }
    
@@ -63,6 +68,7 @@ const init = () => {
 
                 attachClickEventsToSpells()
                 attachMouseOverEventsToSpells()
+
             })
     }
 
@@ -86,6 +92,19 @@ const init = () => {
                     }
                 })
         }
+    }
+
+    function sortSpellsAlphabetically(spellsArr) {
+        const sorted = spellsArr.sort((a, b) => {
+            if (a.innerText < b.innerText) {
+                return -1;
+            }
+            if (b.innerText > a.innerText) {
+                return 1;
+            }
+            return 0;
+        })
+        return sorted
     }
 
 

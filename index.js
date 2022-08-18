@@ -108,7 +108,7 @@ const init = () => {
             .then(data => {
                 const randomSpellObj = getRandomElemFromArray(data)
                 randUseElem.innerText = randomSpellObj.use
-                console.log(randomSpellObj)
+                randUseElem.setAttribute("data-name", randomSpellObj.spell)
             })
     }
 

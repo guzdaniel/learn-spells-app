@@ -5,6 +5,7 @@ const init = () => {
     const spellForm = document.querySelector("form")
     const spellNodes = () => document.querySelectorAll(".spell-name")
     const sortButton = document.querySelector("#sort")
+    const randUseElem = document.querySelector("#random-spell-action")
    
 
     renderSpellsList()

@@ -16,15 +16,6 @@ const init = () => {
     attachMouseOverEventToRandomUse()
     attachClickEventToRandomUse()
 
-    const string = "String/String2"
-    console.log(string.substring(0, 4))
-    console.log(string.substring(0, 6))
-    console.log(string.substring(6))
-    console.log(string.substring(6 + 1))
-    console.log(string.indexOf("/"))
-    console.log(string.indexOf("1"))
-
-
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
     }
@@ -41,13 +32,42 @@ const init = () => {
             spellOfRandomUse = spellOfRandomUse.toLowerCase()
             userFormInput = userFormInput.toLowerCase()
 
-            if (spellOfRandomUse === userFormInput) {
-                userResult.innerText = "Correct! 10 Points for your house!"
+            const slashIndex = spellOfRandomUse.indexOf('/')
+
+            if (slashIndex === -1) {
+
+                if (spellOfRandomUse === userFormInput) {
+                    userResult.innerText = "Correct! 10 Points for your house!"
+                    setTimeout(() => {
+                        userResult.innerText = ""
+                    }
+                        , 2000)
+                }
+                else {
+                    userResult.innerText = `Sorry! Incorrect. Keep studying and try again!`
+                }
             }
 
+            else if (slashIndex > -1) {
+                const spellNameOne = spellOfRandomUse.substring(0, slashIndex)
+                const spellNameTwo = spellOfRandomUse.substring(slashIndex + 1)
+
+                if ((spellNameOne === userFormInput) ||
+                    (spellNameTwo === userFormInput)){
+
+                    userResult.innerText = "Correct! 10 Points for your house!"
+
+                }
+                else {
+                    userResult.innerText = `Sorry! Incorrect. Keep studying and try again!`
+
+                }
+            }
             else {
                 userResult.innerText = `Sorry! Incorrect. Keep studying and try again!`
             }
+
+
         })
     }
 

@@ -4,11 +4,12 @@ const init = () => {
     const spellsList = document.getElementById("spells-list")
     const spellForm = document.querySelector("form")
     const spellNodes = () => document.querySelectorAll(".spell-name")
+    const sortButton = document.querySelector("#sort")
     
-
 
     renderSpellsList()
     attachSubmitEventToForm()
+    attachClickEventToSortButton()
 
     function attachClickEventsToSpells() {
         spellsList.addEventListener("click", renderSpellUses)
@@ -33,6 +34,11 @@ const init = () => {
     
     }
 
+    function attachClickEventToSortButton() {
+        sortButton.addEventListener("click", () => {
+            console.log("sort button was clicked!")
+        })
+    }
    
     function renderSpellsList() {
         let spellsArr = []
